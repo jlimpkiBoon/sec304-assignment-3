@@ -17,9 +17,11 @@ def main():
     parser.add_argument('--area-m2', type=float, default=120)
     parser.add_argument('--bedrooms', type=float, default=3)
     parser.add_argument('--age-years', type=float, default=10)
+    parser.add_argument('--distance-to-station-km', type=float, default=2.0)
     args = parser.parse_args()
     features = {'area_m2': args.area_m2, 'bedrooms': args.bedrooms,
-                'age_years': args.age_years}
+                'age_years': args.age_years,
+                'distance_to_station_km': args.distance_to_station_km}
     try:
         request = Request(args.url.rstrip('/') + '/predict',
                           data=json.dumps(features, allow_nan=False).encode(),

@@ -3,6 +3,7 @@
   "weights": {
     "area_m2": 40000,
     "bedrooms": 200000,
-    "age_years": -15000
+    "age_years": -15000,
+    "distance_to_station_km": -100000
   }
 }

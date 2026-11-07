@@ -5,7 +5,7 @@ Coefficients are supplied by the model owner; no network or Docker logic lives h
 """
 import math
 
-FEATURES = ('area_m2', 'bedrooms', 'age_years')
+FEATURES = ('area_m2', 'bedrooms', 'age_years', 'distance_to_station_km')
 
 
 def number(value):
@@ -36,7 +36,7 @@ def validate_model(model):
 def predict(features, model):
     """Return a prediction using client features and server-side coefficients."""
     if not isinstance(features, dict) or set(features) != set(FEATURES):
-        raise ValueError('provide exactly area_m2, bedrooms, and age_years')
+        raise ValueError('provide exactly area_m2, bedrooms, age_years, and distance_to_station_km')
     for value in features.values():
         if number(value) < 0:
             raise ValueError('features must be nonnegative')

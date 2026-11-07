@@ -17,7 +17,7 @@ from model import predict, validate_model
 
 # Commit to exact approved bytes, including whitespace and final newline.
 # Approving another model requires a reviewed code change and image rebuild.
-EXPECTED_MODEL_SHA256 = '653bfcb49975bb472c52ec031a75dc3df51acdc34496d979cdfa66a8f18e4701'
+EXPECTED_MODEL_SHA256 = '7473ccad0e3ce303620796e61223d1c504508896626255150b5363bf8c1bcfd1'
 
 
 def create_app():
@@ -62,7 +62,7 @@ def create_app():
         try:
             return predict(request.get_json(), current)
         except (ValueError, OverflowError, BadRequest, UnsupportedMediaType):
-            return {'error': 'invalid features: provide three finite, nonnegative numbers named area_m2, bedrooms, age_years'}, 400
+            return {'error': 'invalid features: provide four finite, nonnegative numbers named area_m2, bedrooms, age_years, distance_to_station_km'}, 400
 
     @app.errorhandler(413)
     def too_large(error):
